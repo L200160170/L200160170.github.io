@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Modul 2</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+	<div class="jumbotron text-center">
+  		<h1>Praktikum Sistem Embedded</h1>
+	</div>
+	<nav class="navbar navbar-default">
+  		<div class="container-fluid">
+    	<div class="navbar-header">
+      		<a class="navbar-brand" href="l200160170.github.io">HOME >></a>
+    	</div>
+    	<ul class="nav navbar-nav">
+      	<li><a href="modul1.html">Modul 1</a></li>
+      	<li class="active"><a href="modul2.html">Modul 2</a></li>
+      	<li><a href="modul3.html">Modul 3</a></li>
+      	<li><a href="modul4.html">Modul 4</a></li>
+      	<li><a href="modul5.html">Modul 5</a></li>
+      	<li><a href="modul6.html">Modul 6</a></li>
+      	<li><a href="modul7.html">Modul 7</a></li>
+      	<li><a href="modul8.html">Modul 8</a></li>
+      	<li><a href="modul9.html">Modul 9</a></li>
+    	</ul>
+  		</div>
+	</nav>
+	<div>
+
+		<div>
+			<h1><strong>&nbsp;&nbsp;&nbsp;Modul 2</strong></h1>
+			<hr>
+		</div>
+		<div>
+			<h2><strong>&nbsp;&nbsp;Tugas 1</strong>
+			<h3>&nbsp;&nbsp;&nbsp;Peralatan yang digunakan :</h3>
+				<ol ='1'>
+					<li>Arduino Uno Starter Kit</li>
+					<li>5 buah LED</li>
+					<li>5 buah resistor 220 ohm</li>
+					<li>Jumper</li>
+          <li>Potentiometer</li>
+				</ol>
+				<br>
+				<h3><b>&nbsp;&nbsp;TUGAS 1</b></h3>
+				<p>&nbsp;&nbsp;Mengatur tingkat kecerahan LED dengan menggunakan potentiometer.</p>
+				<p><center><video controls>
+					<source src="modul 2/tugas1.mp4" type="video/mp4">Your browser does not support the video tag.
+				</video></center></p>
+				<div class='row'>
+					<p><h4><b>&nbsp;&nbsp;&nbsp; SOURCE CODE :</b></h4></p>
+					<code style = "max-height: 400px; overflow: scroll"><pre>
+     Source Code:
+    int sensorPin = A0;
+    int ledPin = 9;
+    int ledPin2 = 8;
+    int ledPin3 = 12;
+    int ledPin4 = 13;
+    int ledPin5 = 7;
+    int sensorValue = 0;
+
+    void setup() {
+      pinMode(ledPin, OUTPUT);
+      pinMode(ledPin2, OUTPUT);
+      pinMode(ledPin3, OUTPUT);
+      pinMode(ledPin4, OUTPUT);
+      pinMode(ledPin5, OUTPUT);
+
+    }
+
+    void loop() {
+  
+      sensorValue = analogRead(sensorPin);
+  
+      if(sensorValue < 201){
+        digitalWrite(ledPin, HIGH);
+        digitalWrite(ledPin2, LOW);
+        digitalWrite(ledPin3, LOW);
+        digitalWrite(ledPin4, LOW);
+        digitalWrite(ledPin5, LOW);
+        }
+        else if (sensorValue < 400){
+          digitalWrite(ledPin, LOW);
+          digitalWrite(ledPin2, HIGH);
+          digitalWrite(ledPin3, LOW);
+          digitalWrite(ledPin4, LOW);
+          digitalWrite(ledPin5, LOW); 
+          }
+          else if (sensorValue < 600){
+            digitalWrite(ledPin, LOW);
+            digitalWrite(ledPin2, LOW);
+            digitalWrite(ledPin3, HIGH);
+            digitalWrite(ledPin4, LOW);
+            digitalWrite(ledPin5, LOW); 
+            }
+            else if (sensorValue < 800){
+              digitalWrite(ledPin, LOW);
+              digitalWrite(ledPin2, LOW);
+              digitalWrite(ledPin3, LOW);
+              digitalWrite(ledPin4, HIGH);
+              digitalWrite(ledPin5, LOW); 
+              }
+              else if (sensorValue > 800){
+                digitalWrite(ledPin, LOW);
+                digitalWrite(ledPin2, LOW);
+                digitalWrite(ledPin3, LOW);
+                digitalWrite(ledPin4, LOW);
+                digitalWrite(ledPin5, HIGH); 
+                }
+                }
+		</pre>
+	</code>
+				</div>
+		</div>
+		<div>
+			<h3><b>&nbsp;&nbsp;TUGAS 2</b></h3>
+			<p>&nbsp;&nbsp; Membuat modifikasi program untuk mengendalikan kecerahan lampu LED berdasar potensiometer.</p>
+			<p><center><video controls>
+          <source src="modul 2/tugas2.mp4" type="video/mp4">Your browser does not support the video tag.
+        </video></center></p>
+			<div class='row'>
+					<p><h4><b>&nbsp;&nbsp;&nbsp; SOURCE CODE :</b></h4></p>
+					<code style = "max-height: 400px; overflow: scroll"><pre>
+     int ledPin = 9;
+     int sensorValue = 0;
+     int sensorPin = A0;
+     void setup() {
+     }
+
+     void loop() {
+       sensorValue = analogRead(sensorPin);
+       analogWrite(ledPin, sensorValue/4);
+       delay(30);
+     }
+  
+ </pre>
+</code>
+	</div>
+</body>
+</html>

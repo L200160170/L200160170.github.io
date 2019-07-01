@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Modul 1</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+	<div class="jumbotron text-center">
+  		<h1>Praktikum Sistem Embedded</h1>
+	</div>
+	<nav class="navbar navbar-default">
+  		<div class="container-fluid">
+    	<div class="navbar-header">
+      		<a class="navbar-brand" href="l200160170.github.io">HOME >></a>
+    	</div>
+    	<ul class="nav navbar-nav">
+      	<li class="active"><a href="modul1.html">Modul 1</a></li>
+      	<li><a href="modul2.html">Modul 2</a></li>
+      	<li><a href="modul3.html">Modul 3</a></li>
+      	<li><a href="modul4.html">Modul 4</a></li>
+      	<li><a href="modul5.html">Modul 5</a></li>
+      	<li><a href="modul6.html">Modul 6</a></li>
+      	<li><a href="modul7.html">Modul 7</a></li>
+      	<li><a href="modul8.html">Modul 8</a></li>
+      	<li><a href="modul9.html">Modul 9</a></li>
+    	</ul>
+  		</div>
+	</nav>
+	<div>
+
+		<div>
+			<h1><strong>&nbsp;&nbsp;&nbsp;Modul 1</strong></h1>
+			<hr>
+		</div>
+		<div>
+			<h2><strong>&nbsp;&nbsp;Tugas 1</strong>
+			<h3>&nbsp;&nbsp;&nbsp;Peralatan yang digunakan :</h3>
+				<ol ='1'>
+					<li>Arduino Uno Starter Kit</li>
+					<li>5 buah LED</li>
+					<li>5 buah resistor 220 ohm</li>
+					<li>Jumper</li>
+				</ol>
+				<br>
+				<h3><b>&nbsp;&nbsp;TUGAS 1</b></h3>
+				<p>&nbsp;&nbsp;Buat modifikasi pada program, sehingga ketika switch tidak ditekan (terbuka) lampu LED pada pin 13 menyala(ON). Kemudian jika switch di tekan, maka LED pada pin 13 menjadi pada (OFF).</p>
+				<p><center><video controls>
+					<source src="modul 1/tugas1.mp4" type="video/mp4">Your browser does not support the video tag.
+				</video></center></p>
+				<div class='row'>
+					<p><h4><b>&nbsp;&nbsp;&nbsp; SOURCE CODE :</b></h4></p>
+					<code style = "max-height: 400px; overflow: scroll"><pre>
+     void setup() {
+     // initialize digital pin LED_BUILTIN as an output.
+     pinMode(13, OUTPUT);
+     pinMode(12, OUTPUT);
+     pinMode(11, OUTPUT);
+     pinMode(10, OUTPUT);
+     pinMode(9, OUTPUT);
+   }
+
+   // the loop function runs over and over again forever
+   void loop() {
+     digitalWrite(11, HIGH);   
+     delay(300);              
+     digitalWrite(12, HIGH);   
+     digitalWrite(10, HIGH);   
+     delay(300);              
+     digitalWrite(13, HIGH);   
+     digitalWrite(9, HIGH);   
+     delay(300);             
+     digitalWrite(13, LOW);   
+     digitalWrite(12, LOW);   
+     digitalWrite(11, LOW);   
+     digitalWrite(10, LOW);   
+     digitalWrite(9, LOW);    
+     delay(300);
+     digitalWrite(13, HIGH);   
+     digitalWrite(12, HIGH);   
+     digitalWrite(11, HIGH);   
+     digitalWrite(10, HIGH);   
+     digitalWrite(9, HIGH);    
+     delay(300);
+     digitalWrite(13, LOW);   
+     digitalWrite(12, LOW);   
+     digitalWrite(11, LOW);   
+     digitalWrite(10, LOW);   
+     digitalWrite(9, LOW);    
+     delay(300);
+     digitalWrite(13, HIGH);   
+     digitalWrite(12, HIGH);   
+     digitalWrite(11, HIGH);   
+     digitalWrite(10, HIGH);   
+     digitalWrite(9, HIGH);    
+     delay(300);
+     digitalWrite(13, LOW);   
+     digitalWrite(12, LOW);   
+     digitalWrite(11, LOW);   
+     digitalWrite(10, LOW);   
+     digitalWrite(9, LOW);    
+     delay(300);
+     digitalWrite(13, HIGH);   
+     digitalWrite(12, HIGH);   
+     digitalWrite(11, HIGH);   
+     digitalWrite(10, HIGH);   
+     digitalWrite(9, HIGH);    
+     delay(300);
+     digitalWrite(13, LOW);   
+     digitalWrite(12, LOW);   
+     digitalWrite(11, LOW);   
+     digitalWrite(10, LOW);   
+     digitalWrite(9, LOW);    
+     delay(300);
+  
+   }
+		</pre>
+	</code>
+				</div>
+		</div>
+		<div>
+			<h3><b>&nbsp;&nbsp;TUGAS 2</b></h3>
+			<p>&nbsp;&nbsp; Sambungkan 5 buah LED pada pin output digital, buat modifikasi pada program sehingga jika switch ditekan 2 buah LED menyala dan 3 buah LED mati, sebaliknya jika switch tidak ditekan 2 buah LED mati dan 3 buah LED menyala .</p>
+			<center><img src="modul 1/tugas2.jpg" height="500" width="800"></center>
+			<div class='row'>
+					<p><h4><b>&nbsp;&nbsp;&nbsp; SOURCE CODE :</b></h4></p>
+					<code style = "max-height: 400px; overflow: scroll"><pre>
+     const int buttonS = 2;
+     int buttonState = 0;
+                
+     void setup() {
+         pinMode(13, OUTPUT);
+         pinMode(12, OUTPUT);
+         pinMode(11, OUTPUT);
+         pinMode(10, OUTPUT);
+         pinMode(9, OUTPUT);
+         pinMode(buttonS, INPUT);
+     }
+                
+     void loop() {
+         buttonState = digitalRead(buttonS);
+         if(buttonState == HIGH){
+             digitalWrite(13, LOW);    // turn the LED off by making the voltage LOW
+             digitalWrite(12, LOW);    // turn the LED off by making the voltage LOW
+             digitalWrite(11, LOW);    // turn the LED off by making the voltage LOW
+             digitalWrite(10, HIGH);    // turn the LED off by making the voltage LOW
+             digitalWrite(9, HIGH);    // turn the LED off by making the voltage LOW
+         }else{
+             digitalWrite(13, HIGH);    // turn the LED off by making the voltage LOW
+             digitalWrite(12, HIGH);    // turn the LED off by making the voltage LOW
+             digitalWrite(11, HIGH);    // turn the LED off by making the voltage LOW
+             digitalWrite(10, LOW);    // turn the LED off by making the voltage LOW
+             digitalWrite(9, LOW);    // turn the LED off by making the voltage LOW
+        }
+     }
+ </pre>
+</code>
+	</div>
+</body>
+</html>
