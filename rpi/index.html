@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Modul 1</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+	<div class="jumbotron text-center">
+  		<h1>Praktikum Sistem Embedded</h1>
+	</div>
+	<nav class="navbar navbar-default">
+  		<div class="container-fluid">
+    	<div class="navbar-header">
+      		<a class="navbar-brand" href="l200160170.github.io">HOME >></a>
+    	</div>
+    	<ul class="nav navbar-nav">
+      	<li><a href="modul1.html">Modul 1</a></li>
+      	<li><a href="modul2.html">Modul 2</a></li>
+      	<li><a href="modul3.html">Modul 3</a></li>
+      	<li><a href="modul4.html">Modul 4</a></li>
+      	<li><a href="modul5.html">Modul 5</a></li>
+      	<li><a href="modul6.html">Modul 6</a></li>
+      	<li><a href="modul7.html">Modul 7</a></li>
+      	<li><a href="modul8.html">Modul 8</a></li>
+      	<li><a href="modul9.html">Modul 9</a></li>
+        <li class="active"><a href="uas.html">UAS</a></li>
+    	</ul>
+  		</div>
+	</nav>
+	<div>
+
+		<div>
+			<h1><strong>&nbsp;&nbsp;&nbsp;Uas</strong></h1>
+			<hr>
+		</div>
+		<div>
+			<h2><strong>&nbsp;&nbsp;UAS</strong>
+			<h3>&nbsp;&nbsp;&nbsp;Peralatan yang digunakan :</h3>
+				<ol ='1'>
+					<li>Raspberry pi</li>
+					<li>1 buah LED</li>
+					<li>1 buah resistor 330 ohm dan 470 Ohm</li>
+					<li>Sensor ulrasonic</li>
+          <li>Kabel Jumper</li>
+				</ol
+		<div>
+			<h3><b>&nbsp;&nbsp;UAS</b></h3>
+			<p>&nbsp;&nbsp;Mengukur jarak dalam centimer dengan menggunakan Sensor ultrasonic .</p>
+			<center><img src="uas.jpg" height="500" width="800"></center>
+      <p>
+      <p><center><video controls>
+					<source src="uas.3gp" type="video/3gp">Your browser does not support the video tag.
+				</video></center></p>
+        </p>
+			<div class='row'>
+					<p><h4><b>&nbsp;&nbsp;&nbsp; SOURCE CODE :</b></h4></p>
+					<code style = "max-height: 400px; overflow: scroll"><pre>
+     #Libraries
+     import RPi.GPIO as GPIO
+     import time
+ 
+     #GPIO Mode (BOARD / BCM)
+     GPIO.setmode(GPIO.BCM)
+ 
+     #set GPIO Pins
+     GPIO_TRIGGER = 4
+     GPIO_ECHO = 17
+ 
+     #set GPIO direction (IN / OUT)
+     GPIO.setup(GPIO_TRIGGER, GPIO.OUT)
+     GPIO.setup(GPIO_ECHO, GPIO.IN)
+ 
+     def distance():
+         # set Trigger to HIGH
+         GPIO.output(GPIO_TRIGGER, True)
+ 
+         # set Trigger after 0.01ms to LOW
+        time.sleep(0.00001)
+        GPIO.output(GPIO_TRIGGER, False)
+ 
+         StartTime = time.time()
+         StopTime = time.time()
+ 
+         # save StartTime
+         while GPIO.input(GPIO_ECHO) == 0:
+             StartTime = time.time()
+      
+         # save time of arrival
+         while GPIO.input(GPIO_ECHO) == 1:
+             StopTime = time.time()
+ 
+         # time difference between start and arrival
+         TimeElapsed = StopTime - StartTime
+         # multiply with the sonic speed (34300 cm/s)
+         # and divide by 2, because there and back
+         distance = (TimeElapsed * 34300) / 2
+ 
+         return distance
+ 
+     if __name__ == '__main__':
+         try:
+             while True:
+                 dist = distance()
+                 print ("Measured Distance = %.1f cm" % dist)
+                 time.sleep(1)
+ 
+             # Reset by pressing CTRL + C
+         except KeyboardInterrupt:
+             print("Measurement stopped by User")
+             GPIO.cleanup()
+ </pre>
+</code>
+	</div>
+</body>
+</html>
